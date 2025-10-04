@@ -6,6 +6,8 @@ import MarkdownRenderer from '../../ui/MarkdownRenderer';
 import ProgressBar from '../../ui/ProgressBar';
 import { extractPageId, fetchNotionPage, blocksToMarkdown, fetchAllBlocks } from '@/lib/notion';
 
+const NOTION_ENABLED = process.env.NEXT_PUBLIC_ENABLE_NOTION === 'true';
+
 interface BlogPost {
   id: number;
   title: string;
@@ -78,6 +80,9 @@ const BlogsSection: React.FC = () => {
 
   // Function to fetch database content
   const fetchDatabaseContent = async (post: BlogPost) => {
+    if (!NOTION_ENABLED) {
+      return post;
+    }
     try {
       // Reset progress
       setLoadingProgress({ current: 0, total: 0, status: 'Extracting database ID...' });
@@ -303,6 +308,7 @@ const BlogsSection: React.FC = () => {
 
   // Function to fetch content from Notion
   const fetchNotionContent = async (post: BlogPost) => {
+    if (!NOTION_ENABLED) return post;
     if (!post.notionUrl) return post;
     
     // Check if this is the special database post
@@ -419,6 +425,9 @@ const BlogsSection: React.FC = () => {
 
   // Function to fetch subpage content
   const fetchSubpageContent = async (blockId: string, parentId: number) => {
+    if (!NOTION_ENABLED) {
+      return null;
+    }
     setIsLoading(true);
     try {
       const response = await fetch(`/api/notion/subpage?blockId=${blockId}`);
