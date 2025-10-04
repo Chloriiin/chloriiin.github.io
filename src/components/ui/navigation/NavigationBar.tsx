@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react'
-import SmoothLink from '../../sections/notion/side-nav/SmoothLink'
+import SmoothLink from './SmoothLink'
 import { useActiveSection } from '../../../lib/hooks/useActiveSection'
 
 // Social media icons (you can replace these with proper icon components)

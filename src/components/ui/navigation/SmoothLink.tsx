@@ -12,14 +12,14 @@ interface SmoothLinkProps {
 const SmoothLink: React.FC<SmoothLinkProps> = ({ href, children, className, onClick }) => {
     const pathname = usePathname()
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        const [targetPath, hash] = href.split('#')
+        const [targetPathRaw, hash] = href.split('#')
+        const targetPath = targetPathRaw || pathname
 
         if (pathname === targetPath && hash) {
             e.preventDefault()
             const element = document.getElementById(hash)
             if (element) {
                 element.scrollIntoView({ behavior: 'smooth' })
-                // Optionally update URL hash
                 history.pushState(null, '', `#${hash}`)
             }
         }
@@ -29,6 +29,5 @@ const SmoothLink: React.FC<SmoothLinkProps> = ({ href, children, className, onCl
         <a href={href} onClick={handleClick} className={className}>{children}</a>
     )
 }
-
 
 export default SmoothLink

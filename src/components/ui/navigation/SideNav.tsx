@@ -1,14 +1,14 @@
 "use client";
 import React from 'react';
 import SmoothLink from './SmoothLink';
-import { useActiveSection } from '../../../../lib/hooks/useActiveSection';
+import { useActiveSection } from '../../../lib/hooks/useActiveSection';
 
-interface NavProps {
+interface SideNavProps {
     setIsOpen: (open: boolean) => void;
     isMobile: boolean;
 }
 
-const Nav: React.FC<NavProps> = ({ setIsOpen, isMobile }) => {
+const SideNav: React.FC<SideNavProps> = ({ setIsOpen, isMobile }) => {
     const sections = [
         { label: "Home", href: "/#home", id: "home" },
         { label: "Projects/Portfolio", href: "/#projects", id: "projects" },
@@ -22,8 +22,7 @@ const Nav: React.FC<NavProps> = ({ setIsOpen, isMobile }) => {
                 <SmoothLink
                     key={label}
                     href={href}
-                    className={`transition-all flex ${active === id ? "text-white font-semibold" : "hover:text-white"
-                        }`}
+                    className={`transition-all flex ${active === id ? "text-white font-semibold" : "hover:text-white"}`}
                     onClick={() => {
                         if (isMobile) setIsOpen(false);
                     }}
@@ -35,4 +34,4 @@ const Nav: React.FC<NavProps> = ({ setIsOpen, isMobile }) => {
     );
 };
 
-export default Nav;
+export default SideNav;

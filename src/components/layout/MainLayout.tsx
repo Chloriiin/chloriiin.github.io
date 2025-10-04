@@ -1,8 +1,8 @@
 'use client'
 import { useState, useRef, useEffect, ReactNode } from "react";
 import { usePathname } from 'next/navigation';
-import Nav from "../sections/notion/side-nav/Nav";
-import HeadProfile from "../sections/notion/HeadProfile";
+import SideNav from "../ui/navigation/SideNav";
+import HeadProfile from "../ui/navigation/HeadProfile";
 import { useSwipeScroll } from "../../lib/hooks/useSwipeScroll";
 import MenuButton from "../ui/MenuButton";
 
@@ -64,7 +64,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
             }`}
           >
             <HeadProfile />
-            <Nav setIsOpen={setIsOpen} isMobile={isMobile} />
+            <SideNav setIsOpen={setIsOpen} isMobile={isMobile} />
           </div>
         </aside>
 

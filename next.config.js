@@ -9,13 +9,8 @@ const nextConfig = {
   skipTrailingSlashRedirect: true,
   images: {
     unoptimized: true,
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'www.notion.so',
-      },
-    ],
   },
+  output: 'export',
   basePath,
   assetPrefix,
   eslint: {
