@@ -1,0 +1,21 @@
+/* Custom styles for KaTeX math rendering */
+
+/* Override text color for math formulas to match our theme */
+.katex {
+  color: #e2e2e2;
+  font-size: 1.1em;
+}
+
+/* Add a subtle highlight for block math equations */
+.math-display {
+  padding: 1rem;
+  margin: 1.5rem 0;
+  background: rgba(26, 26, 26, 0.6);
+  border-radius: 0.5rem;
+  overflow-x: auto;
+}
+
+/* Ensure inline math has proper vertical alignment */
+.math-inline {
+  vertical-align: middle;
+}

@@ -1,0 +1,15 @@
+.home-nav-container {
+  position: relative;
+  z-index: 100;
+}
+
+/* This ensures proper z-index layering */
+#home {
+  z-index: 0;
+  position: relative;
+}
+
+section:not(#home) {
+  position: relative;
+  z-index: 200;
+}
