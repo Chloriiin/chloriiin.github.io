@@ -3,13 +3,11 @@
 import React, { useRef, useEffect, useState } from 'react';
 import ProjectsSection from './ProjectsSection';
 import PublicationsSection from './PublicationsSection';
-import BlogsSection from './BlogsSection';
 import AboutMeSection from './AboutMeSection';
 
 const ContentSection: React.FC = () => {
   const projectsRef = useRef<HTMLDivElement>(null);
   const publicationsRef = useRef<HTMLDivElement>(null);
-  const blogRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [activeSection, setActiveSection] = useState<string>('home'); // Start with home since users land on the landing page first
@@ -26,7 +24,6 @@ const ContentSection: React.FC = () => {
       const sections = [
         { id: 'projects', ref: projectsRef },
         { id: 'publications', ref: publicationsRef },
-        { id: 'blogs', ref: blogRef },
         { id: 'aboutme', ref: aboutRef },
       ];
 
@@ -79,9 +76,6 @@ const ContentSection: React.FC = () => {
         </div>
         <div ref={publicationsRef} className="snap-start snap-always min-h-screen flex flex-col" style={{ scrollSnapAlign: 'start', scrollSnapStop: 'always' }}>
           <PublicationsSection />
-        </div>
-        <div ref={blogRef} className="snap-start snap-always min-h-screen flex flex-col relative overflow-hidden" style={{ scrollSnapAlign: 'start', scrollSnapStop: 'always' }}>
-          <BlogsSection />
         </div>
         <div ref={aboutRef} className="snap-start snap-always min-h-screen flex flex-col" style={{ scrollSnapAlign: 'start', scrollSnapStop: 'always' }}>
           <AboutMeSection />

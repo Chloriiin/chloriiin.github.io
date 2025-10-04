@@ -33,7 +33,6 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ className = '' }) => {
         { label: 'Home', href: '#home', id: 'home' },
         { label: 'Projects/Portfolio', href: '#projects', id: 'projects' },
         { label: 'Publications', href: '#publications', id: 'publications' },
-        { label: 'Blogs', href: '#blogs', id: 'blogs' },
         { label: 'About Me', href: '#aboutme', id: 'aboutme' }
     ]
 
