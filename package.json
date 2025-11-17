@@ -11,6 +11,7 @@
     "deploy": "npm run export && touch out/.nojekyll"
   },
   "dependencies": {
+    "@notionhq/client": "^2.2.14",
     "framer-motion": "^12.23.6",
     "gsap": "^3.13.0",
     "katex": "^0.16.22",
