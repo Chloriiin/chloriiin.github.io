@@ -93,10 +93,9 @@ const AboutMeSection: React.FC = () => {
             <AnimatedAccessButton href="https://orcid.org/0009-0005-5464-7306" className="text-xs">
               <OrcidIcon />ORCID
             </AnimatedAccessButton>
-          </div>
             <div className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-2xl overflow-hidden border border-[#1f1f1f] shadow-lg shadow-black/40">
               <Image
-                src="/out/bass.jpg"
+                src="/headshot.jpg"
                 alt="Zhijiang Ye headshot"
                 fill
                 priority
