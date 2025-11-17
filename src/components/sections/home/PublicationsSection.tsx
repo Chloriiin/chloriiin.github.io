@@ -7,6 +7,8 @@ interface Publication {
   date: string;
   roles: string[];
   url?: string;
+  status?: string;
+  dateLabel?: string;
 }
 
 const PublicationsSection: React.FC = () => {
@@ -20,6 +22,48 @@ const PublicationsSection: React.FC = () => {
         "Led the development of model visualizations and scientific figures, designing original illustrations and simulation results to clearly communicate the practical impact and applicability of the new predictive methodology"
       ],
       url: "https://doi.org/10.1109/ICDSIS65355.2025.11071008"
+    },
+    {
+      reference: "Tran, T. Q. M., Erkelens, B., Ye, Z., N. V. N. Tran, Vinh, T., Jun, L. W., Ho, L., Nguyen, L., Huynh T. B. Chau, Al Diab Al Azzawi, M., Tran, L., Thuy, D. H. D., Tran, P., Le, M. H. N., & Huy, N. T. (2025). \"Impact of APOE4 Genotype on Efficacy and Safety of Monoclonal Antibody Therapies in Alzheimer's Disease.\" In submission to Scientific Reports (Nature Portfolio).",
+      authors: [
+        "Tran, T. Q. M.",
+        "Erkelens, B.",
+        "Ye, Z.",
+        "N. V. N. Tran",
+        "Vinh, T.",
+        "Jun, L. W.",
+        "Ho, L.",
+        "Nguyen, L.",
+        "Huynh T. B. Chau",
+        "Al Diab Al Azzawi, M.",
+        "Tran, L.",
+        "Thuy, D. H. D.",
+        "Tran, P.",
+        "Le, M. H. N.",
+        "Huy, N. T."
+      ],
+      date: "2025",
+      roles: [],
+      status: "In submission (Scientific Reports, Nature Portfolio)"
+    },
+    {
+      reference: "Planned submission to bioRxiv and subsequently Microbiology Spectrum. McFadden, W. M., Gao, X., Ye, Z., Wen, X., Lorson, Z. C., Zheng, H., Fahim, J., Emanuelli, A., Kirby, K. A., & Sarafianos, S. G. (2025). \"Thermal Shift Analysis in R (TSAR) identifies folic acid as a molecule that interacts with HIV-1 capsid.\"",
+      authors: [
+        "McFadden, W. M.",
+        "Gao, X.",
+        "Ye, Z.",
+        "Wen, X.",
+        "Lorson, Z. C.",
+        "Zheng, H.",
+        "Fahim, J.",
+        "Emanuelli, A.",
+        "Kirby, K. A.",
+        "Sarafianos, S. G."
+      ],
+      date: "2025",
+      dateLabel: "Planned submission",
+      roles: [],
+      status: "Planned submission to bioRxiv and subsequently Microbiology Spectrum"
     }
   ];
 
@@ -30,31 +74,34 @@ const PublicationsSection: React.FC = () => {
         {publications.map((pub, index) => (
           <div key={index} className="bg-[#000000] rounded-lg overflow-hidden p-5">
             <p className="text-white text-md mb-3 font-medium">{pub.reference}</p>
-            <div className="flex flex-wrap gap-2 mb-3">
-              <span className="text-sm text-gray-400">Authors:</span>
-              {pub.authors.map((author, idx) => (
-                <span 
-                  key={idx} 
-                  className={`text-sm ${author.includes('Ye, Z.') ? 'text-green-400 font-medium' : 'text-gray-300'}`}
-                >
-                  {author}{idx < pub.authors.length - 1 ? ',' : ''}
-                </span>
-              ))}
-            </div>
-            <p className="text-sm text-gray-400 mb-3">Published: <span className="text-gray-300">{pub.date}</span></p>
-            <div>
-              <p className="text-sm text-gray-400 mb-1">Contributions:</p>
-              <ul className="list-disc pl-5">
-                {pub.roles.map((role, idx) => (
-                  <li key={idx} className="text-sm text-gray-300">{role}</li>
-                ))}
-              </ul>
-            </div>
-            {pub.url && (
-              <div className="mt-4 flex justify-end">
-                <AnimatedAccessButton href={pub.url} />
+            <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+              <div>
+                <div className="flex flex-wrap gap-2 mb-2">
+                  <span className="text-sm text-gray-400">Authors:</span>
+                  {pub.authors.map((author, idx) => (
+                    <span 
+                      key={idx} 
+                      className={`text-sm ${author.includes('Ye, Z.') ? 'text-green-400 font-medium' : 'text-gray-300'}`}
+                    >
+                      {author}{idx < pub.authors.length - 1 ? ',' : ''}
+                    </span>
+                  ))}
+                </div>
+                <p className="text-sm text-gray-400">
+                  {pub.dateLabel ?? 'Published'}: <span className="text-gray-300">{pub.date}</span>
+                </p>
               </div>
-            )}
+              {(pub.url || pub.status) && (
+                <div className="flex md:justify-end">
+                  {pub.url ? (
+                    <AnimatedAccessButton href={pub.url} />
+                  ) : (
+                    <span className="text-sm text-gray-400 italic">{pub.status}</span>
+                  )}
+                </div>
+              )}
+            </div>
+            {/* Roles retained in data model for future use, but hidden per request */}
           </div>
         ))}
       </div>

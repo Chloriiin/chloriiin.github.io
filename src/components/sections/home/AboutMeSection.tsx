@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import AnimatedAccessButton from '../../ui/AnimatedAccessButton';
 
 // Icon components
@@ -20,101 +21,134 @@ const OrcidIcon = () => (
   </svg>
 );
 
+const researchInterests = [
+  {
+    title: "Biochemistry and Molecular Biology",
+    text: "biochemical mechanisms, inhibitory actions, drug discovery"
+  },
+  {
+    title: "Structural Biology",
+    text: "atomic-level molecular interactions, biophysical assays"
+  },
+  {
+    title: "Genetics and Epigenetics",
+    text: "gene regulation, chromatin dynamics, CRISPR"
+  },
+  {
+    title: "Computational & Machine Learning Methods for Biology",
+    text: "mathematical modeling, AI drug discovery, AI simulation"
+  }
+];
+
+const education = {
+  institution: "Emory University",
+  location: "Atlanta, GA",
+  period: "08/2022 - 05/2026 (Expected)",
+  details: [
+    "GPA: 3.992/4.000",
+    "(Honors) Bachelor of Science in Biology",
+    "Bachelor of Science in Applied Mathematics"
+  ]
+};
+
 const AboutMeSection: React.FC = () => {
   return (
     <section id="aboutme" className="relative h-full min-h-screen">
       <div className="p-5 pt-8 h-full">
-        {/* Header with buttons */}
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="text-3xl font-bold text-white pb-2 inline-block">About Me</h2>
-          
-          {/* Buttons in one row */}
-          <div className="flex gap-2">
-            <AnimatedAccessButton href="mailto:zhijiang.ye@emory.edu" className="text-xs">
-              Email
-            </AnimatedAccessButton>
-            <AnimatedAccessButton href="https://github.com/Chloriiin" className="text-xs">
-              <GitHubIcon />GitHub
-            </AnimatedAccessButton>
-            <AnimatedAccessButton href="https://www.linkedin.com/in/zhijiangye" className="text-xs">
-              <LinkedInIcon />LinkedIn
-            </AnimatedAccessButton>
-            <AnimatedAccessButton href="/cv_zhijiangye.pdf" className="text-xs">
-              Curriculum Vitae
-            </AnimatedAccessButton>
+        {/* Header, intro, buttons, and headshot */}
+        <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between mb-12">
+          <div className="flex-1 space-y-6">
+            <h2 className="text-3xl font-bold text-white pb-2 inline-block">About Me</h2>
+            <div className="max-w-2xl">
+              <p className="text-gray-300 text-base leading-relaxed">
+                Hello!!! My name is Zhijiang (Zach) Ye, and I am currently pursuing Bachelor of Science in Biology and Applied Mathematics (double major) at Emory University, with an expected graduation in May 2026. In my free time, I enjoy music and Chinese cuisine, and I play bass guitar as a co-founder of{' '}
+                <a
+                  href="https://www.instagram.com/the.gradient.band/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#70ff64] hover:text-white underline decoration-[#70ff64]/60 decoration-2 underline-offset-4"
+                >
+                  The Gradient 🎸
+                </a>
+                !
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-col items-center md:items-end gap-4 md:pl-8">
+            {/* Buttons in one row */}
+            <div className="flex flex-wrap justify-center md:justify-end gap-2">
+              <AnimatedAccessButton href="mailto:zhijiang.ye@emory.edu" className="text-xs">
+                Email
+              </AnimatedAccessButton>
+              <AnimatedAccessButton href="https://github.com/Chloriiin" className="text-xs">
+                <GitHubIcon />GitHub
+              </AnimatedAccessButton>
+              <AnimatedAccessButton href="https://www.linkedin.com/in/zhijiangye" className="text-xs">
+                <LinkedInIcon />LinkedIn
+              </AnimatedAccessButton>
+              <AnimatedAccessButton href="/cv_zhijiangye.pdf" className="text-xs">
+                Curriculum Vitae
+              </AnimatedAccessButton>
             <AnimatedAccessButton href="https://orcid.org/0009-0005-5464-7306" className="text-xs">
               <OrcidIcon />ORCID
             </AnimatedAccessButton>
           </div>
-        </div>
-        
-        {/* Main Introduction Text - Aligned exactly with "About Me" header */}
-        <div className="mb-12">
-          <div className="max-w-2xl">
-            <p className="text-gray-300 text-base leading-relaxed">
-              My name is Zhijiang (Zach) Ye, and I am currently pursuing Bachelor of Science in Biology and Applied Mathematics (double major) at Emory University, with an expected graduation in May 2026.
-            </p>
+            <div className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-2xl overflow-hidden border border-[#1f1f1f] shadow-lg shadow-black/40">
+              <Image
+                src="/out/bass.jpg"
+                alt="Zhijiang Ye headshot"
+                fill
+                priority
+                sizes="(min-width: 768px) 9rem, (min-width: 640px) 8rem, 7rem"
+                className="object-cover rounded-2xl scale-110"
+              />
+            </div>
           </div>
         </div>
 
         {/* Horizontal Divider */}
         <div className="w-full h-px bg-[#2a2a2a] mb-12"></div>
 
-        {/* Research Areas Section - Positioned to the far right */}
-        <div className="flex justify-end mb-8">
-          <div className="max-w-4xl w-full">
-            <h3 className="text-xl font-semibold text-gray-400 uppercase tracking-wider">Academic</h3>
-          </div>
-        </div>
-
-        {/* Vertical Layout - Biology and Applied Math - Far right positioning */}
+        {/* Education + Research Interests */}
         <div className="flex justify-end">
-          <div className="max-w-4xl w-full space-y-12">
-            {/* Biology Section */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="md:col-span-1">
-                <h4 className="text-lg font-semibold text-[#51f0ed] mb-2">Biology</h4>
-                <p className="text-sm text-gray-400 uppercase tracking-wider">Current Research Focus</p>
-              </div>
-              
-              <div className="md:col-span-2 space-y-4">
-                <div className="flex items-start gap-3">
-                  <div className="w-1.5 h-1.5 bg-[#51f0ed] rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-gray-300 text-sm leading-relaxed">
-                    <span className="text-white font-medium">Sarafianos Lab Research:</span> Currently working as an undergraduate researcher in the Sarafianos Lab at Emory Pediatrics. Here I investigate interaction dynamics between engineered HIV-1 Capsid protein (CA121) mutants and specific inhibitory compounds.
-                  </p>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <div className="w-1.5 h-1.5 bg-[#51f0ed] rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-gray-300 text-sm leading-relaxed">
-                    <span className="text-white font-medium">Academic Interests:</span> My academic interests are focused particularly in biochemical pharmacology and structural biology.
-                  </p>
-                </div>
+          <div className="max-w-4xl w-full flex flex-col md:flex-row gap-12">
+            <div className="md:w-2/5">
+              <h3 className="text-xl font-semibold text-gray-400 uppercase tracking-wider mb-4">Education</h3>
+              <div className="space-y-2 text-sm text-gray-300">
+                <p className="text-lg font-semibold text-white">{education.institution}</p>
+                <p className="text-gray-400">{education.location}</p>
+                <p className="text-xs text-gray-500 uppercase tracking-wider">{education.period}</p>
+                <ul className="mt-4 space-y-2 list-none">
+                  {education.details.map((detail, idx) => (
+                    <li key={idx} className="text-sm text-gray-300">
+                      {detail}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
 
-            {/* Applied Mathematics Section */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="md:col-span-1">
-                <h4 className="text-lg font-semibold text-[#70ff64] mb-2">Applied Mathematics (in Biology)</h4>
-                <p className="text-sm text-gray-400 uppercase tracking-wider">Mathematical Integration</p>
-              </div>
-              
-              <div className="md:col-span-2 space-y-4">
-                <div className="flex items-start gap-3">
-                  <div className="w-1.5 h-1.5 bg-[#70ff64] rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-gray-300 text-sm leading-relaxed">
-                    <span className="text-white font-medium">Interdisciplinary Approach:</span> While working at Sarafianos Lab, I am particularly fascinated by how numerical methods as well as mathematical modeling can be integrated with experimental biology to elucidate complex biochemical mechanisms.
-                  </p>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <div className="w-1.5 h-1.5 bg-[#70ff64] rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-gray-300 text-sm leading-relaxed">
-                    <span className="text-white font-medium">Algorithm Development:</span> My work includes developing and optimizing curve-fitting algorithms to improve the accuracy of Thermal Shift Assay data interpretation.
-                  </p>
-                </div>
+            <div className="md:w-3/5">
+              <h3 className="text-xl font-semibold text-gray-400 uppercase tracking-wider mb-6">Research Interests</h3>
+              <div className="space-y-8">
+                {researchInterests.map((interest) => (
+                  <div key={interest.title} className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="md:col-span-1">
+                      <h4 className="text-lg font-semibold mb-2 text-white">
+                        {interest.title}
+                      </h4>
+                    </div>
+                    
+                    <div className="md:col-span-2">
+                      <div className="flex items-start gap-3">
+                        <p className="text-gray-300 text-sm leading-relaxed">
+                          {interest.text}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
