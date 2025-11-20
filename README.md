@@ -1,44 +1,43 @@
 # Personal Website
 
-A modern personal website built with React and TypeScript, featuring an Apple-style liquid glass navigation bar.
+Static portfolio built with Next.js 15, TypeScript, and Tailwind CSS.
 
-## Getting Started
+## Tech Stack
 
-Run the development server:
+- Next.js App Router with static export (`output: 'export'`)
+- TypeScript and Tailwind CSS for styling
+- Framer Motion and custom hooks for interactions
+- GitHub Pages deployment via Actions workflow
+
+## Local Development
 
 ```bash
+npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit `http://localhost:3000` while `npm run dev` is running.
 
-## Features
+## Production Build
 
-- Modern responsive design with TypeScript
-- **Liquid Glass Navigation**: iOS 26-style glass effect using CSS and SVG filters
-- Hill animation with GSAP and normal distribution curves
-- Smooth animations and interactions
-- Project showcase with masonry layout
-- Real-time clock display
+```bash
+npm run build
+```
 
-## Dependencies
+The static site is emitted to the `out/` directory and published automatically by the GitHub Pages workflow located in `.github/workflows/deploy.yml`.
 
-### Liquid Glass Effect
-This project uses a custom implementation based on [archisvaze/liquid-glass](https://github.com/archisvaze/liquid-glass):
-- **Repository**: [archisvaze/liquid-glass](https://github.com/archisvaze/liquid-glass)
-- **Implementation**: Pure CSS and SVG filters for authentic Apple iOS 26 liquid glass effect
-- **Features**: 
-  - Inner shadow with customizable blur, spread & color
-  - Glass tint with RGB color and opacity control
-  - Frost blur using backdrop-filter
-  - Noise distortion via SVG fractal turbulence
-  - Hardware-accelerated rendering
+## Environment Notes
 
-### Animation Libraries
-- **GSAP**: For smooth hill animation with mouse tracking
-- **CSS backdrop-filter**: Native browser glass physics simulation
-- **SVG Filters**: For noise distortion and glass displacement effects
+- All content is static; third-party APIs and Notion integrations were removed.
+- Add secrets to `.env.local` (ignored by git) if dynamic services are reintroduced.
 
-### Browser Support
-- **Tested on**: Chromium-based browsers (Chrome, Edge, etc.)
-- **Limited support**: Safari and Firefox (due to backdrop-filter and SVG filter variations)
+## Project Structure
+
+- `src/app` – Next.js app directory, routes, and layout
+- `src/components` – UI sections and shared components
+- `src/lib` – Utilities and hooks
+- `public/` – Static assets, including the latest resume PDF
+
+## Deployment
+
+Pushes to `main` trigger the GitHub Actions workflow that builds the site and publishes `out/` to GitHub Pages at `https://chloriiin.github.io/`.
