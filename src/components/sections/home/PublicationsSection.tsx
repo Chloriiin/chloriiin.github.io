@@ -47,7 +47,7 @@ const PublicationsSection: React.FC = () => {
       status: "In submission (Scientific Reports, Nature Portfolio)"
     },
     {
-      reference: "Planned submission to bioRxiv and subsequently Microbiology Spectrum. McFadden, W. M., Gao, X., Ye, Z., Wen, X., Lorson, Z. C., Zheng, H., Fahim, J., Emanuelli, A., Kirby, K. A., & Sarafianos, S. G. (2025). \"Thermal Shift Analysis in R (TSAR) identifies folic acid as a molecule that interacts with HIV-1 capsid.\"",
+      reference: "McFadden, W. M., Gao, X., Ye, Z., Wen, X., Lorson, Z. C., Zheng, H., Fahim, J., Emanuelli, A., Kirby, K. A., & Sarafianos, S. G. (2023). \"Thermal Shift Analysis in R (TSAR) identifies folic acid as a molecule that interacts with HIV-1 capsid.\" bioRxiv. https://doi.org/10.1101/2023.11.29.569293",
       authors: [
         "McFadden, W. M.",
         "Gao, X.",
@@ -60,10 +60,11 @@ const PublicationsSection: React.FC = () => {
         "Kirby, K. A.",
         "Sarafianos, S. G."
       ],
-      date: "2025",
-      dateLabel: "Planned submission",
+      date: "November 2023",
+      dateLabel: "Preprint",
       roles: [],
-      status: "Planned submission to bioRxiv and subsequently Microbiology Spectrum"
+      url: "https://www.biorxiv.org/lookup/doi/10.1101/2023.11.29.569293",
+      status: "bioRxiv preprint"
     }
   ];
 
