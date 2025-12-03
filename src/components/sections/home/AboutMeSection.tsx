@@ -32,11 +32,11 @@ const researchInterests = [
   },
   {
     title: "Genetics and Epigenetics",
-    text: "gene regulation, chromatin dynamics, CRISPR"
+    text: "epigenomic regulation, chromatin dynamics, CRISPR"
   },
   {
     title: "Computational & Machine Learning Methods for Biology",
-    text: "mathematical modeling, AI drug discovery, AI simulation"
+    text: "mathematical modeling, use of machine learning in drug discovery, use of reinforcement learning in strctural prediction and assembly"
   }
 ];
 
